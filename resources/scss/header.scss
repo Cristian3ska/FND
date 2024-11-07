@@ -1,0 +1,157 @@
+@import 'var.scss';
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $primary-color;
+    color: $secondary-color;
+    padding: 10px 20px;
+    z-index: 1;
+    position: fixed; // Mantiene el header fijo
+    top: 0; // Asegúrate de que esté en la parte superior
+    width: 100%;
+    .logo {
+        height: auto;
+        width: 200px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+        margin-right: 50px;
+
+        a {
+            color: $link-color;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+
+            // Estilo de hover en pantalla grande
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: transparent;
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                transition: background-color 0.3s ease;
+            }
+
+            &:hover {
+                color: $link-hover-color;
+
+                &::after {
+                    background-color: $link-hover-color;
+                }
+            }
+        }
+    }
+
+    .hamburger-menu {
+        display: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: $secondary-color;
+    }
+
+    // Menú lateral
+    .side-menu {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        height: 100%;
+        width: 250px;
+        background-color: $side-menu-bg-color;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        transition: right 0.3s ease;
+        z-index: 999;
+
+        &.active {
+            right: 0;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            color: $link-color;
+            font-size: 24px;
+            cursor: pointer;
+
+            &:hover {
+                color: $link-hover-color;
+            }
+        }
+
+        a {
+            padding: 15px;
+            color: $link-color;
+            text-decoration: none;
+            font-size: 18px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+
+            // Estilo de hover en menú lateral
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: transparent;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transition: background-color 0.3s ease;
+            }
+
+            &:hover {
+                background-color: $side-menu-hover-bg-color;
+                color: $link-hover-color;
+
+                &::after {
+                    background-color: $link-hover-color;
+                }
+            }
+        }
+    }
+
+    // Superposición para oscurecer el contenido
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); // Fondo semitransparente
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        z-index: 999;
+    }
+
+    // Activa la superposición cuando el menú está abierto
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none; // Oculta las opciones de navegación en dispositivos móviles
+        }
+
+        .hamburger-menu {
+            display: block; // Muestra el icono de hamburguesa en dispositivos móviles
+        }
+    }
+}

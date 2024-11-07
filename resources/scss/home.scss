@@ -1,0 +1,203 @@
+@import 'var.scss';
+
+/*
+--------------------------------------------
+CONTENIDO
+--------------------------------------------
+*/
+.content {
+    text-align: center;
+    position: relative;
+    margin-top: 70px;
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+
+        .tittle-landscape {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 10%;
+        }
+
+        img {
+            filter: opacity(0.5);
+        }
+
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: $primary-color;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); // Mejora la legibilidad
+        }
+    }
+}
+
+/*
+--------------------------------------------
+Iconos (que tipos de terrenos hay en venta)
+--------------------------------------------
+*/
+.type-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+
+    h1 {
+        font-size: 50px;
+        color: $primary-color;
+    }
+
+    .icons-container {
+        display: flex; // Alinea los íconos en una fila
+        gap: 20px; // Espacio entre íconos
+        margin-top: 20px; // Separación del título
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            color: $fnd-grey;
+            font-size: 14px;
+            padding: 55px;
+            margin: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s ease; // Transición suave para el hover
+
+            i {
+                font-size: 30px;
+                margin-bottom: 5px;
+            }
+
+            &:hover {
+                background-color: darken($yellow, 10%); // Cambio de color al pasar el mouse
+            }
+        }
+
+        .icon1 {
+            background-color: $orange;
+        }
+
+        .icon2 {
+            background-color: $green;
+        }
+
+        .icon3 {
+            background-color: $yellow;
+        }
+    }
+}
+
+/*
+--------------------------------------------
+Recientes
+--------------------------------------------
+*/
+.recent {
+    margin: 100px auto; // Espacio superior para separar del contenido anterior
+
+    h1 {
+        font-size: 50px;
+        color: $primary-color;
+        margin-bottom: 20px; // Espacio debajo del título
+    }
+
+    .cards-container {
+        display: flex; // Coloca las tarjetas en fila
+        justify-content: center; // Centra las tarjetas horizontalmente
+        gap: 20px; // Espacio entre las tarjetas
+        flex-wrap: wrap; // Permite que las tarjetas se envuelvan si es necesario
+
+        .card {
+            display: flex; // Usa flexbox para alinear imagen y contenido
+            flex-direction: column; // Organiza los elementos en columna
+            background-color: $primary-color;
+            border-radius: 15px;
+            border: 1px solid grey;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Agrega una sombra sutil
+            transition: transform 0.2s ease; // Efecto de transformación suave al pasar el mouse
+            overflow: hidden; // Asegura que el contenido no se desborde
+            width: 30%; // Ancho total para que se ajuste a su contenedor
+            max-width: 350px; // Establece un ancho máximo para las tarjetas
+
+            &:hover {
+                transform: translateY(-5px); // Mueve la tarjeta hacia arriba al pasar el mouse
+            }
+
+            .card-image {
+                height: 200px; // Altura fija para la imagen
+                width: 100%; // Ancho total para la imagen
+                object-fit: cover; // Asegura que la imagen cubra el área
+                border-radius: 15px 15px 0 0; // Bordes redondeados en la parte superior
+            }
+
+            .card-content {
+                display: flex; // Usa flexbox para alinear el contenido
+                flex-direction: column; // Alinea el contenido en columna
+                justify-content: center; // Centra verticalmente el contenido
+                padding: 20px; // Espacio interno para el contenido
+            }
+
+            .card-title {
+                font-size: 24px; // Tamaño del título
+                margin: 10px 0; // Espacio superior e inferior
+                color: $fnd-red; // Color del título
+                text-align: left; // Alinea el texto a la izquierda
+                border-bottom: 2px solid $fnd-red;
+            }
+
+            .description-card {
+                font-size: 16px; // Tamaño de la descripción
+                margin: 5px 0; // Espacio superior e inferior
+                text-align: left; // Alinea el texto a la izquierda
+                color: #555; // Color gris para la descripción
+            }
+
+            .price {
+                font-size: 18px; // Tamaño del precio
+                font-weight: bold; // Negrita para el precio
+                color: #333; // Color del precio
+                margin-top: 10px; // Espacio superior
+                text-align: right; // Alinea el texto a la derecha
+            }
+        }
+    }
+}
+
+/*
+--------------------------------------------
+MOVIL
+--------------------------------------------
+*/
+@media (max-width: 768px) {
+    .content .image-container h1 {
+        font-size: 35px; // Ajusta el tamaño del texto en móvil
+    }
+
+    .type-icons .icons-container .icon {
+        margin: 0;
+        padding: 40px; // Reduce el padding para móviles
+    }
+
+    .recent .cards-container {
+        flex-direction: column; // Coloca las tarjetas en una sola columna
+        align-items: center; // Centra las tarjetas
+    }
+
+    .recent .cards-container .card {
+        width: 80%; // Reduce el ancho de las tarjetas para ajustarse mejor en pantalla pequeña
+        margin-bottom: 20px; // Añade espacio entre las tarjetas
+    }
+}
